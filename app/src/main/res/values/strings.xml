@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Truyện Tranh Hay</string>
+    <string name="truyen_moi">Truyện mới</string>
+    <string name="truyen_hot">Truyện hot</string>
+</resources>

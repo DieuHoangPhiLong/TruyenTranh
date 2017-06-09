@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <ImageView
+            android:id="@+id/imgHinhTruyenChiTiet"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:src="@drawable/placeholder"
+            android:scaleType="fitXY"
+            />
+        <TextView
+            android:id="@+id/txtTenChiTiet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/tenTruyen"
+            tools:text="Tên truyện"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:background="@color/backgroundTenTruyen"
+            />
+        <TextView
+            android:id="@+id/txtChiTietTruyen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Chi tiết"
+            android:textSize="15sp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:background="@color/backgroundTenTruyen"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#14BEA0"
+            >
+
+            <TextView
+                android:id="@+id/txtDiemTruyenChiTiet"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableBottom="@drawable/ic_star"
+                android:gravity="center"
+                android:padding="10dp"
+                android:textColor="@color/colorWhite"
+                tools:text="10"
+                />
+
+            <TextView
+                android:id="@+id/txtChapMoiChiTiet"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="10dp"
+                android:textColor="@color/colorWhite"
+                tools:text="1"
+                android:drawableBottom="@drawable/ic_fiber_new"
+                />
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Nội dung"
+            android:padding="10dp"
+            />
+        <TextView
+            android:id="@+id/txtNoiDungChiTiet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="4"
+            tools:text="Nội dung"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerViewChiTietTruyen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            />
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

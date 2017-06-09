@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="background">#1e202a</color>
+    <color name="tenTruyen">#29c6ab</color>
+    <color name="backgroundTenTruyen">#80000000</color>
+    <color name="backgroundGray">#FFB7B7B7</color>
+</resources>
