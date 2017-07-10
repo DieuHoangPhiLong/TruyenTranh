@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 
 import com.philong.truyentranhhay.adapters.AdapterTruyenHot;
 import com.philong.truyentranhhay.adapters.AdapterTruyenMoi;
@@ -33,13 +34,20 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerViewTruyenMoi;
     private AdapterTruyenMoi mAdapterTruyenMoi;
     private List<Truyen> mListTruyenMoi;
-
+    //Toolbar
+    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Setup toolbar
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        if(getSupportActionBar() == null){
+            setSupportActionBar(mToolbar);
+            getSupportActionBar().setTitle(R.string.app_name);
+        }
         //Setup truyen hot
         mRecyclerViewTruyenHot = (RecyclerView) findViewById(R.id.recyclerViewTruyenHot);
         mListTruyenHot = new ArrayList<>();

@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -42,6 +43,8 @@ public class ChiTietTruyenActivity extends AppCompatActivity {
     private RecyclerView mRecyclerViewChiTietTruyen;
     private AdapterChiTietTruyen mAdapterChiTietTruyen;
     private List<Chuong> mListChuong;
+    //Toolbar
+    private Toolbar mToolbar;
 
     public static Intent newIntent(Context context, String linkTruyen, String linkHinh){
         Intent intent = new Intent(context, ChiTietTruyenActivity.class);
@@ -69,6 +72,12 @@ public class ChiTietTruyenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chi_tiet_truyen);
 
+        //setup toolbar;
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        if(getSupportActionBar() == null){
+            setSupportActionBar(mToolbar);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
         imgHinhTruyenChiTiet = (ImageView) findViewById(R.id.imgHinhTruyenChiTiet);
         txtTenTruyenChiTiet = (TextView) findViewById(R.id.txtTenChiTiet);
         txtDiemChiTiet = (TextView) findViewById(R.id.txtDiemTruyenChiTiet);

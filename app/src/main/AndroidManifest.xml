@@ -18,7 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ChiTietTruyenActivity">
+        <activity android:name=".ChiTietTruyenActivity"
+            android:parentActivityName=".MainActivity">
         </activity>
         <activity android:name=".HienThiTruyenActivity">
         </activity>

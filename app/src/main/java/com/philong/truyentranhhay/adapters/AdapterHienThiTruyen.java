@@ -21,10 +21,12 @@ public class AdapterHienThiTruyen extends RecyclerView.Adapter<AdapterHienThiTru
     private Context mContext;
     private List<String> mListTruyenTranh;
 
+
     public AdapterHienThiTruyen(Context context, List<String> listTruyenTranh) {
         mContext = context;
         mListTruyenTranh = listTruyenTranh;
     }
+
 
     @Override
     public ViewHolderHienThiTruyen onCreateViewHolder(ViewGroup parent, int viewType) {

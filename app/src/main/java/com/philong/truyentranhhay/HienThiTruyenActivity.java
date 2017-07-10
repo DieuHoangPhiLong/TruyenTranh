@@ -2,12 +2,16 @@ package com.philong.truyentranhhay;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Matrix;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
+import android.view.WindowManager;
 
 import com.philong.truyentranhhay.adapters.AdapterHienThiTruyen;
 
@@ -28,6 +32,10 @@ public class HienThiTruyenActivity extends AppCompatActivity {
     private AdapterHienThiTruyen mAdapterHienThiTruyen;
     private List<String> mListTruyenTranh;
 
+    //Pinch zoom
+    private ScaleGestureDetector mScaleGestureDetector;
+    private Matrix mMatrix = new Matrix();
+    private AdapterHienThiTruyen.ViewHolderHienThiTruyen viewHolder;
 
     public static Intent newIntent(Context context, String linkChap){
         Intent intent = new Intent(context, HienThiTruyenActivity.class);
@@ -46,12 +54,22 @@ public class HienThiTruyenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hien_thi_truyen);
+        mScaleGestureDetector = new ScaleGestureDetector(this, new ScaleListener());
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         mListTruyenTranh = new ArrayList<>();
         mRecyclerViewHienThiTruyen = (RecyclerView) findViewById(R.id.recyclerViewHienThiTruyen);
         mRecyclerViewHienThiTruyen.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         mRecyclerViewHienThiTruyen.setItemAnimator(new DefaultItemAnimator());
         mRecyclerViewHienThiTruyen.setHasFixedSize(true);
+        viewHolder = (AdapterHienThiTruyen.ViewHolderHienThiTruyen) mRecyclerViewHienThiTruyen.findViewHolderForLayoutPosition(0);
+
         new GetTruyen().execute(getExtraLinkChap());
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        mScaleGestureDetector.onTouchEvent(event);
+        return true;
     }
 
     public class GetTruyen extends AsyncTask<String, Void, List<String>>{
@@ -86,5 +104,18 @@ public class HienThiTruyenActivity extends AppCompatActivity {
                 mAdapterHienThiTruyen.notifyDataSetChanged();
             }
         }
+    }
+
+    private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener{
+
+        @Override
+        public boolean onScale(ScaleGestureDetector detector) {
+            float scaleFactor = detector.getScaleFactor();
+            scaleFactor = Math.max(0.1f, Math.min(scaleFactor, 5.0f));
+            mMatrix.setScale(scaleFactor, scaleFactor);
+            viewHolder.imgHienThiTruyen.setImageMatrix(mMatrix);
+            return true;
+        }
+
     }
 }
